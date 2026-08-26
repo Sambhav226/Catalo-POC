@@ -24,17 +24,8 @@ docker compose -f docker/docker-compose.yml up --build
 
 ## Documentation
 
-| Doc | What's inside |
-| --- | --- |
-| [docs/WALKTHROUGH.md](docs/WALKTHROUGH.md) | End-to-end trace: every entry point → every node → every DB row. Read this first if you want to understand the system in one pass. |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | The chosen design (LangGraph multi-agent), data flow, state contract, why it wins. |
-| [docs/ALTERNATIVES.md](docs/ALTERNATIVES.md) | Two rejected designs (Monolithic LLM + RAG, CrewAI/AutoGen autonomous swarm) — with pros, cons, and the honest reasons they lost. |
-| [docs/COMPONENTS.md](docs/COMPONENTS.md) | Deep dive on every module: agents, tools, graph, storage, API, UI. |
-| [docs/DB_SCHEMA.md](docs/DB_SCHEMA.md) | Normalised DB schema — ERD, per-table specs, query patterns, migration plan. |
-| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Local, Docker, and cloud (ECS / Cloud Run / K8s) deployment paths. |
-| [docs/DATA_STRATEGY.md](docs/DATA_STRATEGY.md) | How the seed data was collected, legal/ToS notes, and how to plug in Firecrawl / Bright Data / SerpAPI for real scale. |
-| [docs/EVALUATION.md](docs/EVALUATION.md) | Coverage, conflict-rate, and hallucination metrics used to score the enrichment. |
 
+| ARCHITECTURE.md](ARCHITECTURE.md) | The chosen design (LangGraph multi-agent), data flow, state contract, why it wins. |
 ## Project layout
 
 ```
@@ -42,7 +33,6 @@ catalog-enrichment-poc/
 ├── data/
 │   ├── seed/            # Real, checked-in product data from Croma/Amazon/Samsung/LG/Sony
 │   └── enriched/        # Pipeline output (git-ignored at scale)
-├── docs/                # Design & ops docs
 ├── docker/              # Dockerfile + docker-compose
 ├── scripts/             # CLI runners (seed, enrich, eval)
 ├── src/
