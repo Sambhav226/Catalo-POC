@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+data/.cache/
+data/enriched/*.db
+data/enriched/*.json
+!data/enriched/.gitkeep
+.DS_Store
+*.egg-info/
+.ipynb_checkpoints/
+docs/

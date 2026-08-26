@@ -1,0 +1,25 @@
+{
+  "category": "4K LED TV",
+  "cross_field_rules": [
+    {
+      "name": "resolution_implies_pixels",
+      "when": {"resolution": "4K UHD"},
+      "then": {"resolution_pixels": "3840x2160"}
+    },
+    {
+      "name": "smart_tv_implies_os",
+      "when": {"smart_tv": true},
+      "then_field_required": "operating_system"
+    },
+    {
+      "name": "qled_implies_display_type",
+      "when_contains": {"processor": "QLED"},
+      "then": {"display_type": "QLED"}
+    }
+  ],
+  "unit_conversions": {
+    "screen_size": {"cm_to_inch": 0.3937, "prefer": "inch"},
+    "power": {"prefer": "W"},
+    "weight": {"prefer": "kg"}
+  }
+}

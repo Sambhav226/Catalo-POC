@@ -1,0 +1,53 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: catalog-enrichment:latest
+    container_name: catalog-api
+    env_file: ../.env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///data/enriched/catalog.db}
+    volumes:
+      - ../data:/app/data
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  ui:
+    image: catalog-enrichment:latest
+    container_name: catalog-ui
+    env_file: ../.env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///data/enriched/catalog.db}
+    volumes:
+      - ../data:/app/data
+    depends_on:
+      - api
+    ports:
+      - "8501:8501"
+    command: >
+      streamlit run ui/app.py
+      --server.port 8501
+      --server.address 0.0.0.0
+      --server.headless true
+
+  db:
+    image: postgres:16-alpine
+    container_name: catalog-db
+    environment:
+      POSTGRES_USER: catalog
+      POSTGRES_PASSWORD: catalog
+      POSTGRES_DB: catalog
+    ports:
+      - "5432:5432"
+    volumes:
+      - catalog-db-data:/var/lib/postgresql/data
+    profiles: ["postgres"]
+
+volumes:
+  catalog-db-data:
