@@ -4,7 +4,6 @@ Agentic pipeline that takes a leaf category from one e-commerce site (e.g. 4K LE
 
 ## Quickstart
 
-```bash
 git clone <repo> catalog-enrichment-poc
 cd catalog-enrichment-poc
 
@@ -20,12 +19,11 @@ python -m scripts.run_enrichment --category "4K LED TV" --limit 5
 docker compose -f docker/docker-compose.yml up --build
 # API:  http://localhost:8000/docs
 # UI :  http://localhost:8501
-```
 
 ## Documentation
 
 
-| ARCHITECTURE.md](ARCHITECTURE.md) | The chosen design (LangGraph multi-agent), data flow, state contract, why it wins. |
+| ARCHITECTURE.md](ARCHITECTURE.md) | The chosen design (LangGraph multi-agent), data flow, state contract.
 ## Project layout
 
 ```
